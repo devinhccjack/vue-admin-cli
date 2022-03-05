@@ -1,5 +1,5 @@
 {
-  "name": "vue-admin-cli",
+  "name": "vue-admin-cli-hcc",
   "version": "1.0.0",
   "description": "",
   "main": "./bin/index.js",
