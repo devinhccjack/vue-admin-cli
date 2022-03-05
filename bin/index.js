@@ -20,7 +20,7 @@ program
   // 声明的命令
   .command('upgrade')
   // 描述信息，在帮助信息时显示
-  .description("Check the js-plugin-cli version.")
+  .description("Check the vue-admin-cli version.")
   .action(() => {
     // 执行 lib/update.js 里面的操作
     updateChk()
@@ -44,7 +44,7 @@ program
 
   // init 初始化项目
 program
-.name('js-plugin-cli')
+.name('vue-admin-cli')
 .usage('<commands> [options]')
 .command('init <project_name>')
 .description('Create a javascript plugin project.')

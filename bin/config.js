@@ -5,7 +5,7 @@ const path = require('path')
 
 // 声明配置文件内容
 const jsonConfig = {
-  "name": "js-plugin-cli",
+  "name": "vue-admin-cli",
   "mirror": "https://github.com/hechongchong/template-cli/blob/main/"
 }
 

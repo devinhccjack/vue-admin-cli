@@ -1,17 +1,18 @@
 ### vue-admin-cli 
 node cli template
 
+### init project
+vue-admin-cli template
+
 ### 命令
-js-plugin-cli template
+vue-admin-cli -v
 
-js-plugin-cli -v
+vue-admin-cli upgrade
 
-js-plugin-cli upgrade
-
-js-plugin-cli init projectName
+vue-admin-cli init projectName
 
 ## download地址
-js-plugin-cli mirror https://github.com/hechongchong/vue_admin/
+vue-admin-cli mirror https://github.com/hechongchong/vue_admin/
 
 ## 参考
 https://blog.csdn.net/weixin_46837985/article/details/121943460
