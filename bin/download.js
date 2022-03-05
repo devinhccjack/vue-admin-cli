@@ -54,9 +54,7 @@ async function dlAction() {
     //   extract: true
     // });
     // 模板文件
-    // const template = 'direct:https://github.com/EchoHGX/express-demo.git';
-    // const template = 'direct:https://github.com/hechongchong/vue_admin.git';
-    const template = 'direct:https://github.com/hechongchong/admin-template.git';
+    const template = 'direct:https://github.com/hechongchong/vue_admin.git';
 
     const loading = ora("下载初始化模板中...")
     loading.start()
