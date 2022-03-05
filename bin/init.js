@@ -74,27 +74,27 @@ async function initProject(projectName) {
             `${targetPath}/src/index.js`
           ]
 
-          if(multiFiles.length > 0){
-            // 用条件循环把模板字符替换到文件去
-            for (var i = 0; i < multiFiles.length; i++) {
-              // 这里记得 try {} catch {} 哦，以便出错时可以终止掉 Spinner
-              try {
-                // 等待读取文件
-                const multiFilesContent = await fse.readFile(multiFiles[i], 'utf8')
-                // 等待替换文件，handlebars.compile(原文件内容)(模板字符)
-                const multiFilesResult = await handlebars.compile(multiFilesContent)(multiMeta)
-                // 等待输出文件
-                await fse.outputFile(multiFiles[i], multiFilesResult)
-              } catch (err) {
-                // 如果出错，Spinner 就改变文字信息
-                initSpinner.text = chalk.red(`Initialize project failed. ${err}`)
-                // 终止等待动画并显示 X 标志
-                initSpinner.fail()
-                // 退出进程
-                process.exit()
-              }
-            }
-          }
+          // if(multiFiles.length > 0){
+          //   // 用条件循环把模板字符替换到文件去
+          //   for (var i = 0; i < multiFiles.length; i++) {
+          //     // 这里记得 try {} catch {} 哦，以便出错时可以终止掉 Spinner
+          //     try {
+          //       // 等待读取文件
+          //       const multiFilesContent = await fse.readFile(multiFiles[i], 'utf8')
+          //       // 等待替换文件，handlebars.compile(原文件内容)(模板字符)
+          //       const multiFilesResult = await handlebars.compile(multiFilesContent)(multiMeta)
+          //       // 等待输出文件
+          //       await fse.outputFile(multiFiles[i], multiFilesResult)
+          //     } catch (err) {
+          //       // 如果出错，Spinner 就改变文字信息
+          //       initSpinner.text = chalk.red(`Initialize project failed. ${err}`)
+          //       // 终止等待动画并显示 X 标志
+          //       initSpinner.fail()
+          //       // 退出进程
+          //       process.exit()
+          //     }
+          //   }
+          // }
 
           // 如果成功，Spinner 就改变文字信息
           initSpinner.text = 'Initialize project successful.'
