@@ -19,20 +19,20 @@ const cfgPath = path.resolve(__dirname, '../config.json')
 // 拼接 template 模板文件夹完整路径
 const tplPath = path.resolve(__dirname, '../template')
 
-async function dlTemplate() {
+async function dlTemplate(LCProjectName) {
   // 参考上方 mirror.js 主代码注释
   const exists = await fse.pathExists(cfgPath)
   if (exists) {
     // 这里记得加 await，在 init.js 调用时使用 async/await 生效
-    await dlAction()
+    await dlAction(LCProjectName)
   } else {
     await defConfig()
     // 同上
-    await dlAction()
+    await dlAction(LCProjectName)
   }
 }
 
-async function dlAction() {
+async function dlAction(LCProjectName) {
   // 清空模板文件夹的相关内容，用法见 fs-extra 的 README.md
   try {
     await fse.remove(tplPath)
@@ -42,7 +42,7 @@ async function dlAction() {
   }
 
   // 读取配置，用于获取镜像链接
-  const jsonConfig = await fse.readJson(cfgPath)
+  // const jsonConfig = await fse.readJson(cfgPath)
   // Spinner 初始设置
   const dlSpinner = ora(chalk.cyan('Downloading template...'))
 
@@ -58,14 +58,16 @@ async function dlAction() {
 
     const loading = ora("下载初始化模板中...")
     loading.start()
-    // const _projectPath = path.join(process.cwd(),'./')
-    const _projectPaths = path.resolve(__dirname, '../template/');
-    // {clone: true}
-    await downloads(template,_projectPaths,{clone: true},err=>{
+    // const _projectPath = path.join(process.cwd(),'../')
+    // const _projectPaths = path.resolve(__dirname, '../template/');
+    const _projectPaths = path.resolve(__dirname, `../${LCProjectName}/`);
+
+    // 下载github模板
+    downloads(template, _projectPaths, { clone: true }, err => {
       loading.stop()
-      if(err){
-        // console.error(chalk.red('出错了'+err));
-      }else{
+      if (err) {
+        // console.error(chalk.red('出错了' + err))
+      } else {
         //将下载下来的模板的package名称替换掉
         // shell.sed('-i','app',dirname,_projectPath + '/package.json')
         console.log(chalk.green('项目创建成功'))

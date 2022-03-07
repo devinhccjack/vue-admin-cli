@@ -48,18 +48,20 @@ async function initProject(projectName) {
 
           // 先判断模板路径是否存在
           const exists = await fse.pathExists(templatePath)
+
           if (!exists) {
             // 不存在时，就先等待下载模板，下载完再执行下面的语句
-            await dlTemplate()
+            await dlTemplate(`${LCProjectName}`)
+
           }
 
           // 等待复制好模板文件到对应路径去
-          try {
-            await fse.copy(templatePath, targetPath)
-          } catch (err) {
-            console.log(symbols.error, chalk.red(`Copy template failed. ${err}`))
-            process.exit()
-          }
+          // try {
+          //   await fse.copy(templatePath, targetPath)
+          // } catch (err) {
+          //   console.log(symbols.error, chalk.red(`Copy template failed. ${err}`))
+          //   process.exit()
+          // }
 
           // 把要替换的模板字符准备好
           const multiMeta = {
